@@ -6,7 +6,7 @@
 %endif
 
 Name:           python-%{pypi_name}
-Version:        0.3
+Version:        0.8
 Release:        1%{?dist}
 Summary:        Coordination library for distributed systems
 
@@ -30,6 +30,7 @@ Requires:       python-pymemcache
 Requires:       python-posix_ipc
 Requires:       python-msgpack
 Requires:       python-retrying
+Requires:       python-redis
 
 %description
 The Tooz project aims at centralizing the most common distributed primitives
@@ -54,6 +55,7 @@ Requires:       python3-pymemcache
 Requires:       python3-posix_ipc
 Requires:       python3-msgpack
 Requires:       python3-retrying
+Requires:       python-redis
 
 %description -n python3-%{pypi_name}
 The Tooz project aims at centralizing the most common distributed primitives
@@ -136,6 +138,9 @@ rm -fr %{buildroot}%{python3_sitelib}/%{pypi_name}/tests/
 %doc html
 
 %changelog
+* Thu Oct 23 2014 Eoghan Glynn <eglynn@redhat.com> - 0.8-1
+- Rebased on 0.8 upstream.
+
 * Tue Sep 09 2014 Nejc Saje <nsaje@redhat.com> - 0.3-1
 - Initial package.
 

@@ -6,7 +6,7 @@
 %endif
 
 Name:           python-%{pypi_name}
-Version:        0.8
+Version:        0.9
 Release:        1%{?dist}
 Summary:        Coordination library for distributed systems
 
@@ -27,7 +27,6 @@ Requires:       python-iso8601
 Requires:       python-kazoo
 Requires:       python-oslo-config
 Requires:       python-pymemcache
-Requires:       python-posix_ipc
 Requires:       python-msgpack
 Requires:       python-retrying
 Requires:       python-redis
@@ -52,7 +51,6 @@ Requires:       python3-iso8601
 Requires:       python3-kazoo
 Requires:       python3-oslo-config
 Requires:       python3-pymemcache
-Requires:       python3-posix_ipc
 Requires:       python3-msgpack
 Requires:       python3-retrying
 Requires:       python-redis
@@ -138,6 +136,10 @@ rm -fr %{buildroot}%{python3_sitelib}/%{pypi_name}/tests/
 %doc html
 
 %changelog
+* Fri Nov 21 2014 Eoghan Glynn <eglynn@redhat.com> - 0.9-1
+- Rebased on 0.9 upstream.
+- Removed python-posix_ipc dependency.
+
 * Thu Oct 23 2014 Eoghan Glynn <eglynn@redhat.com> - 0.8-1
 - Rebased on 0.8 upstream.
 

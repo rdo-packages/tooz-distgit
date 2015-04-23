@@ -2,11 +2,12 @@
 %global pypi_name tooz
 
 %if 0%{?fedora}
-%global with_python3 1
+# re-enable when python3-oslo-utils is available
+%global with_python3 0
 %endif
 
 Name:           python-%{pypi_name}
-Version:        0.9
+Version:        0.13.2
 Release:        1%{?dist}
 Summary:        Coordination library for distributed systems
 
@@ -18,18 +19,17 @@ BuildArch:      noarch
 BuildRequires:  python2-devel
 BuildRequires:  python-setuptools
 BuildRequires:  python-pbr
-# For building documentation
-BuildRequires:  python-sphinx
 Requires:       python-babel
-Requires:       python-stevedore
-Requires:       python-six
-Requires:       python-iso8601
+Requires:       python-stevedore >= 1.1.0
+Requires:       python-six >= 1.9.0
+Requires:       python-iso8601 >= 0.1.9
 Requires:       python-kazoo
-Requires:       python-oslo-config
+Requires:       python-oslo-utils >= 1.2.0
 Requires:       python-pymemcache
 Requires:       python-msgpack
 Requires:       python-retrying
 Requires:       python-redis
+Requires:       python-futures
 
 %description
 The Tooz project aims at centralizing the most common distributed primitives
@@ -42,18 +42,16 @@ Summary:        Coordination library for distributed systems
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-pbr
-# For building documentation
-BuildRequires:  python3-sphinx
 Requires:       python3-babel
 Requires:       python3-stevedore
 Requires:       python3-six
 Requires:       python3-iso8601
 Requires:       python3-kazoo
-Requires:       python3-oslo-config
+#Requires:       python3-oslo-utils
 Requires:       python3-pymemcache
 Requires:       python3-msgpack
 Requires:       python3-retrying
-Requires:       python-redis
+Requires:       python3-redis
 
 %description -n python3-%{pypi_name}
 The Tooz project aims at centralizing the most common distributed primitives
@@ -66,6 +64,9 @@ Summary:    Documentation for %{name}
 Group:      Documentation
 License:    ASL 2.0
 
+BuildRequires:  python-sphinx
+BuildRequires:  python-oslo-sphinx
+
 %description doc
 The Tooz project aims at centralizing the most common distributed primitives
 like group membership protocol, lock service and leader election by providing
@@ -76,23 +77,11 @@ This package contains documentation in HTML format.
 
 %prep
 %setup -q -n %{pypi_name}-%{version}
-# Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
-
-# generate html docs
-sphinx-build doc/source html
-# remove the sphinx-build leftovers
-rm -rf html/.{doctrees,buildinfo}
 
 %if 0%{?with_python3}
 rm -rf %{py3dir}
 cp -a . %{py3dir}
 find %{py3dir} -name '*.py' | xargs sed -i '1s|^#!python|#!%{__python3}|'
-# generate html docs
-sphinx-build-3 doc/source html
-# remove the sphinx-build leftovers
-rm -rf html/.{doctrees,buildinfo}
-
 %endif # with_python3
 
 
@@ -105,37 +94,47 @@ pushd %{py3dir}
 popd
 %endif
 
+# generate html docs
+sphinx-build doc/source html
+# remove the sphinx-build leftovers
+rm -rf html/.{doctrees,buildinfo}
+
 
 %install
 %{__python2} setup.py install --skip-build --root %{buildroot}
+rm -fr %{buildroot}%{python2_sitelib}/%{pypi_name}/tests/
 
 %if 0%{?with_python3}
 pushd %{py3dir}
 %{__python3} setup.py install --skip-build --root %{buildroot}
 popd
+rm -fr %{buildroot}%{python3_sitelib}/%{pypi_name}/tests/
 %endif
 
-#delete tests
-rm -fr %{buildroot}%{python2_sitelib}/%{pypi_name}/tests/
-rm -fr %{buildroot}%{python3_sitelib}/%{pypi_name}/tests/
 
 
 %files
-%doc README.rst LICENSE
+%license LICENSE
+%doc README.rst
 %{python2_sitelib}/%{pypi_name}
 %{python2_sitelib}/%{pypi_name}-%{version}-py?.?.egg-info
 
 %if 0%{?with_python3}
 %files -n python3-%{pypi_name}
-%doc README.rst LICENSE
+%license LICENSE
+%doc README.rst
 %{python3_sitelib}/%{pypi_name}
 %{python3_sitelib}/%{pypi_name}-%{version}-py?.?.egg-info
 %endif
 
 %files doc
+%license LICENSE
 %doc html
 
 %changelog
+* Fri Apr 24 2015 Alan Pevec <alan.pevec@redhat.com> 0.13.2-1
+- Update to upstream 0.13.2
+
 * Fri Nov 21 2014 Eoghan Glynn <eglynn@redhat.com> - 0.9-1
 - Rebased on 0.9 upstream.
 - Removed python-posix_ipc dependency.

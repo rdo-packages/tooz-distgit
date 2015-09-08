@@ -2,13 +2,12 @@
 %global pypi_name tooz
 
 %if 0%{?fedora}
-# re-enable when python3-oslo-utils is available
-%global with_python3 0
+%global with_python3 1
 %endif
 
 Name:           python-%{pypi_name}
-Version:        0.13.2
-Release:        2%{?dist}
+Version:        1.23.0
+Release:        1%{?dist}
 Summary:        Coordination library for distributed systems
 
 License:        ASL 2.0
@@ -20,16 +19,17 @@ BuildRequires:  python2-devel
 BuildRequires:  python-setuptools
 BuildRequires:  python-pbr
 Requires:       python-babel
-Requires:       python-stevedore >= 1.1.0
+Requires:       python-stevedore >= 1.5.0
 Requires:       python-six >= 1.9.0
 Requires:       python-iso8601 >= 0.1.9
-Requires:       python-kazoo
-Requires:       python-oslo-utils >= 1.2.0
-Requires:       python-pymemcache
+Requires:       python-oslo-utils >= 2.0.0
 Requires:       python-msgpack
 Requires:       python-retrying
-Requires:       python-redis
 Requires:       python-futures
+Requires:       python-fasteners
+Requires:       python-futurist
+Requires:       python-oslo-serialization
+
 
 %description
 The Tooz project aims at centralizing the most common distributed primitives
@@ -46,12 +46,9 @@ Requires:       python3-babel
 Requires:       python3-stevedore
 Requires:       python3-six
 Requires:       python3-iso8601
-Requires:       python3-kazoo
 #Requires:       python3-oslo-utils
-Requires:       python3-pymemcache
 Requires:       python3-msgpack
 Requires:       python3-retrying
-Requires:       python3-redis
 
 %description -n python3-%{pypi_name}
 The Tooz project aims at centralizing the most common distributed primitives
@@ -132,6 +129,9 @@ rm -fr %{buildroot}%{python3_sitelib}/%{pypi_name}/tests/
 %doc html
 
 %changelog
+* Wed Sep 09 2015 Alan Pevec <alan.pevec@redhat.com> 1.23.0-1
+- Update to upstream 1.23.0
+
 * Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.13.2-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
 

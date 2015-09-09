@@ -46,9 +46,12 @@ Requires:       python3-babel
 Requires:       python3-stevedore
 Requires:       python3-six
 Requires:       python3-iso8601
-#Requires:       python3-oslo-utils
+Requires:       python3-oslo-utils
 Requires:       python3-msgpack
 Requires:       python3-retrying
+Requires:       python3-fasteners
+Requires:       python3-futurist
+Requires:       python3-oslo-serialization
 
 %description -n python3-%{pypi_name}
 The Tooz project aims at centralizing the most common distributed primitives
@@ -63,6 +66,7 @@ License:    ASL 2.0
 
 BuildRequires:  python-sphinx
 BuildRequires:  python-oslo-sphinx
+BuildRequires:  python-stevedore >= 1.5.0
 
 %description doc
 The Tooz project aims at centralizing the most common distributed primitives

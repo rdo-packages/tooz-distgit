@@ -6,7 +6,7 @@
 %endif
 
 Name:           python-%{pypi_name}
-Version:        1.23.0
+Version:        1.24.0
 Release:        1%{?dist}
 Summary:        Coordination library for distributed systems
 
@@ -133,6 +133,9 @@ rm -fr %{buildroot}%{python3_sitelib}/%{pypi_name}/tests/
 %doc html
 
 %changelog
+* Wed Oct 07 2015 Alan Pevec <alan.pevec@redhat.com> 1.24.0-1
+- Update to upstream 1.24.0
+
 * Wed Sep 09 2015 Alan Pevec <alan.pevec@redhat.com> 1.23.0-1
 - Update to upstream 1.23.0
 

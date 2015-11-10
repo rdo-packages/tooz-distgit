@@ -7,7 +7,7 @@
 
 Name:           python-%{pypi_name}
 Version:        1.24.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Coordination library for distributed systems
 
 License:        ASL 2.0
@@ -133,6 +133,9 @@ rm -fr %{buildroot}%{python3_sitelib}/%{pypi_name}/tests/
 %doc html
 
 %changelog
+* Tue Nov 10 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.24.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Changes/python3.5
+
 * Wed Oct 07 2015 Alan Pevec <alan.pevec@redhat.com> 1.24.0-1
 - Update to upstream 1.24.0
 

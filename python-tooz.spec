@@ -19,18 +19,19 @@ BuildArch:      noarch
 
 BuildRequires:  python2-devel
 BuildRequires:  python-setuptools
-BuildRequires:  python-pbr
+BuildRequires:  python-pbr >= 1.8
 Requires:       python-babel
-Requires:       python-stevedore >= 1.5.0
-Requires:       python-six >= 1.9.0
-Requires:       python-iso8601 >= 0.1.9
-Requires:       python-oslo-utils >= 2.0.0
-Requires:       python-msgpack
-Requires:       python-retrying
-Requires:       python-futures
 Requires:       python-fasteners
+Requires:       python-futures
 Requires:       python-futurist
+Requires:       python-iso8601 >= 0.1.9
+Requires:       python-msgpack
 Requires:       python-oslo-serialization
+Requires:       python-oslo-utils >= 2.0.0
+Requires:       python-retrying
+Requires:       python-six >= 1.9.0
+Requires:       python-stevedore >= 1.5.0
+Requires:       python-zake
 
 
 %description
@@ -43,17 +44,18 @@ a coordination API helping developers to build distributed applications.
 Summary:        Coordination library for distributed systems
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
-BuildRequires:  python3-pbr
+BuildRequires:  python3-pbr >= 1.8
 Requires:       python3-babel
-Requires:       python3-stevedore
-Requires:       python3-six
-Requires:       python3-iso8601
-Requires:       python3-oslo-utils
-Requires:       python3-msgpack
-Requires:       python3-retrying
 Requires:       python3-fasteners
 Requires:       python3-futurist
+Requires:       python3-iso8601 >= 0.1.9
+Requires:       python3-msgpack
 Requires:       python3-oslo-serialization
+Requires:       python3-oslo-utils
+Requires:       python3-retrying
+Requires:       python3-six >= 1.9.0
+Requires:       python3-stevedore >= 1.5.0
+Requires:       python3-zake
 
 %description -n python3-%{pypi_name}
 The Tooz project aims at centralizing the most common distributed primitives

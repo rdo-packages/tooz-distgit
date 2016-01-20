@@ -31,6 +31,7 @@ Requires:       python-oslo-utils >= 2.0.0
 Requires:       python-retrying
 Requires:       python-six >= 1.9.0
 Requires:       python-stevedore >= 1.5.0
+Requires:       python-voluptuous >= 0.8.6
 Requires:       python-zake
 
 
@@ -55,6 +56,7 @@ Requires:       python3-oslo-utils
 Requires:       python3-retrying
 Requires:       python3-six >= 1.9.0
 Requires:       python3-stevedore >= 1.5.0
+Requires:       python3-voluptuous >= 0.8.6
 Requires:       python3-zake
 
 %description -n python3-%{pypi_name}

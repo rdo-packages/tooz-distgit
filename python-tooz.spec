@@ -6,8 +6,8 @@
 %endif
 
 Name:           python-%{pypi_name}
-Version:        1.24.0
-Release:        3%{?dist}
+Version:        1.32.0
+Release:        1%{?dist}
 Summary:        Coordination library for distributed systems
 
 License:        ASL 2.0
@@ -25,11 +25,12 @@ Requires:       python-iso8601 >= 0.1.9
 Requires:       python-oslo-utils >= 2.0.0
 Requires:       python-msgpack
 Requires:       python-retrying
+Requires:       python-requests >= 2.8.1
 Requires:       python-futures
 Requires:       python-fasteners
 Requires:       python-futurist
 Requires:       python-oslo-serialization
-
+Requires:       python-voluptuous >= 0.8.6
 
 %description
 The Tooz project aims at centralizing the most common distributed primitives
@@ -49,9 +50,11 @@ Requires:       python3-iso8601
 Requires:       python3-oslo-utils
 Requires:       python3-msgpack
 Requires:       python3-retrying
+Requires:       python3-requests >= 2.8.1
 Requires:       python3-fasteners
 Requires:       python3-futurist
 Requires:       python3-oslo-serialization
+Requires:       python3-voluptuous >= 0.8.6
 
 %description -n python3-%{pypi_name}
 The Tooz project aims at centralizing the most common distributed primitives
@@ -133,6 +136,9 @@ rm -fr %{buildroot}%{python3_sitelib}/%{pypi_name}/tests/
 %doc html
 
 %changelog
+* Mon Feb 22 2016 Pradeep Kilambi <pkilambi@redhat.com> 1.32.0-1
+- Update to upstream 1.32.0
+
 * Thu Feb 04 2016 Fedora Release Engineering <releng@fedoraproject.org> - 1.24.0-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
 

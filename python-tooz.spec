@@ -14,7 +14,7 @@ Summary:        Coordination library for distributed systems
 
 License:        ASL 2.0
 URL:            https://tooz.readthedocs.org
-Source0:        http://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-master.tar.gz
+Source0:        http://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{upstream_version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python2-devel
@@ -27,11 +27,11 @@ Requires:       python-futurist
 Requires:       python-iso8601 >= 0.1.9
 Requires:       python-msgpack
 Requires:       python-oslo-serialization
-Requires:       python-oslo-utils >= 2.0.0
+Requires:       python-oslo-utils >= 3.15.0
 Requires:       python-retrying
 Requires:       python-six >= 1.9.0
-Requires:       python-stevedore >= 1.5.0
-Requires:       python-voluptuous >= 0.8.6
+Requires:       python-stevedore >= 1.16.0
+Requires:       python-voluptuous >= 0.8.9
 Requires:       python-zake
 
 
@@ -52,11 +52,11 @@ Requires:       python3-futurist
 Requires:       python3-iso8601 >= 0.1.9
 Requires:       python3-msgpack
 Requires:       python3-oslo-serialization
-Requires:       python3-oslo-utils
+Requires:       python3-oslo-utils >= 3.15.0
 Requires:       python3-retrying
 Requires:       python3-six >= 1.9.0
-Requires:       python3-stevedore >= 1.5.0
-Requires:       python3-voluptuous >= 0.8.6
+Requires:       python3-stevedore >= 1.16.0
+Requires:       python3-voluptuous >= 0.8.9
 Requires:       python3-zake
 
 %description -n python3-%{pypi_name}

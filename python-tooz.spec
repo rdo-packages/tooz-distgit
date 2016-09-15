@@ -14,7 +14,7 @@ Summary:        Coordination library for distributed systems
 
 License:        ASL 2.0
 URL:            https://tooz.readthedocs.org
-Source0:        http://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{upstream_version}.tar.gz
+Source0:        https://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{upstream_version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python2-devel

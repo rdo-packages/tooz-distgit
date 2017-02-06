@@ -21,16 +21,19 @@ BuildRequires:  python2-devel
 BuildRequires:  python-setuptools
 BuildRequires:  python-pbr >= 1.8
 Requires:       python-babel
+Requires:       python-enum34
 Requires:       python-fasteners
 Requires:       python-futures
 Requires:       python-futurist
 Requires:       python-iso8601 >= 0.1.9
 Requires:       python-msgpack
-Requires:       python-oslo-serialization
+Requires:       python-oslo-serialization >= 1.10.0
 Requires:       python-oslo-utils >= 3.15.0
+Requires:       python-pbr >= 1.6
 Requires:       python-retrying
 Requires:       python-six >= 1.9.0
 Requires:       python-stevedore >= 1.16.0
+Requires:       python-tenacity >= 3.2.1
 Requires:       python-voluptuous >= 0.8.9
 Requires:       python-zake
 
@@ -48,14 +51,17 @@ BuildRequires:  python3-setuptools
 BuildRequires:  python3-pbr >= 1.8
 Requires:       python3-babel
 Requires:       python3-fasteners
+Requires:       python3-futures
 Requires:       python3-futurist
 Requires:       python3-iso8601 >= 0.1.9
 Requires:       python3-msgpack
-Requires:       python3-oslo-serialization
+Requires:       python3-oslo-serialization >= 1.10.0
 Requires:       python3-oslo-utils >= 3.15.0
+Requires:       python3-pbr >= 1.6
 Requires:       python3-retrying
 Requires:       python3-six >= 1.9.0
 Requires:       python3-stevedore >= 1.16.0
+Requires:       python3-tenacity >= 3.2.1
 Requires:       python3-voluptuous >= 0.8.9
 Requires:       python3-zake
 

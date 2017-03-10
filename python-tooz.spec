@@ -30,13 +30,13 @@ Requires:       python-msgpack
 Requires:       python-oslo-serialization >= 1.10.0
 Requires:       python-oslo-utils >= 3.15.0
 Requires:       python-pbr >= 1.6
+Requires:       python-redis
 Requires:       python-retrying
 Requires:       python-six >= 1.9.0
 Requires:       python-stevedore >= 1.16.0
 Requires:       python-tenacity >= 3.2.1
 Requires:       python-voluptuous >= 0.8.9
 Requires:       python-zake
-
 
 %description
 The Tooz project aims at centralizing the most common distributed primitives
@@ -58,6 +58,7 @@ Requires:       python3-msgpack
 Requires:       python3-oslo-serialization >= 1.10.0
 Requires:       python3-oslo-utils >= 3.15.0
 Requires:       python3-pbr >= 1.6
+Requires:       python3-redis
 Requires:       python3-retrying
 Requires:       python3-six >= 1.9.0
 Requires:       python3-stevedore >= 1.16.0

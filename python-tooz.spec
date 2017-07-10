@@ -1,5 +1,6 @@
 # Created by pyp2rpm-1.0.1
 %global pypi_name tooz
+%global with_doc 0
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
@@ -20,6 +21,7 @@ BuildArch:      noarch
 BuildRequires:  python2-devel
 BuildRequires:  python-setuptools
 BuildRequires:  python-pbr >= 1.8
+BuildRequires:  git
 Requires:       python-babel
 Requires:       python-enum34
 Requires:       python-fasteners
@@ -72,14 +74,23 @@ like group membership protocol, lock service and leader election by providing
 a coordination API helping developers to build distributed applications.
 %endif
 
+%if %{?with_doc}
 %package doc
 Summary:    Documentation for %{name}
 Group:      Documentation
 License:    ASL 2.0
 
 BuildRequires:  python-sphinx
-BuildRequires:  python-oslo-sphinx
+BuildRequires:  python-openstackdocstheme
+BuildRequires:  python-msgpack
+BuildRequires:  python-enum
+BuildRequires:  python-futures
+BuildRequires:  python-futurist
+BuildRequires:  python-msgpack
+BuildRequires:  python-oslo-serialization
+BuildRequires:  python-oslo-utils
 BuildRequires:  python-stevedore >= 1.5.0
+BuildRequires:  python-tenacity
 
 %description doc
 The Tooz project aims at centralizing the most common distributed primitives
@@ -87,10 +98,11 @@ like group membership protocol, lock service and leader election by providing
 a coordination API helping developers to build distributed applications.
 
 This package contains documentation in HTML format.
+%endif
 
 
 %prep
-%setup -q -n %{pypi_name}-%{upstream_version}
+%autosetup -n %{pypi_name}-%{upstream_version} -S git
 
 %if 0%{?with_python3}
 rm -rf %{py3dir}
@@ -108,10 +120,12 @@ pushd %{py3dir}
 popd
 %endif
 
+%if %{?with_doc}
 # generate html docs
-sphinx-build doc/source html
+%{__python2} setup.py build_sphinx -b html
 # remove the sphinx-build leftovers
-rm -rf html/.{doctrees,buildinfo}
+rm -rf doc/build/html/.{doctrees,buildinfo}
+%endif
 
 
 %install
@@ -141,8 +155,10 @@ rm -fr %{buildroot}%{python3_sitelib}/%{pypi_name}/tests/
 %{python3_sitelib}/%{pypi_name}-*.egg-info
 %endif
 
+%if %{?with_doc}
 %files doc
 %license LICENSE
-%doc html
+%doc doc/build/html
+%endif
 
 %changelog

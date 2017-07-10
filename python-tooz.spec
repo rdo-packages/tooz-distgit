@@ -146,3 +146,4 @@ rm -fr %{buildroot}%{python3_sitelib}/%{pypi_name}/tests/
 %doc html
 
 %changelog
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/tooz/commit/?id=38bcf7bbdb4a5f53ac81d45f2b7c310e5ea5f4da

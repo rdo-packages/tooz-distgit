@@ -20,7 +20,7 @@ BuildArch:      noarch
 
 BuildRequires:  python2-devel
 BuildRequires:  python-setuptools
-BuildRequires:  python-pbr >= 1.8
+BuildRequires:  python-pbr >= 2.0.0
 BuildRequires:  git
 Requires:       python-babel
 Requires:       python-enum34
@@ -31,7 +31,7 @@ Requires:       python-iso8601 >= 0.1.9
 Requires:       python-msgpack
 Requires:       python-oslo-serialization >= 1.10.0
 Requires:       python-oslo-utils >= 3.15.0
-Requires:       python-pbr >= 1.6
+Requires:       python-pbr >= 2.0.0
 Requires:       python-redis
 Requires:       python-retrying
 Requires:       python-six >= 1.9.0
@@ -50,7 +50,7 @@ a coordination API helping developers to build distributed applications.
 Summary:        Coordination library for distributed systems
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
-BuildRequires:  python3-pbr >= 1.8
+BuildRequires:  python3-pbr >= 2.0.0
 Requires:       python3-babel
 Requires:       python3-fasteners
 Requires:       python3-futures
@@ -59,7 +59,7 @@ Requires:       python3-iso8601 >= 0.1.9
 Requires:       python3-msgpack
 Requires:       python3-oslo-serialization >= 1.10.0
 Requires:       python3-oslo-utils >= 3.15.0
-Requires:       python3-pbr >= 1.6
+Requires:       python3-pbr >= 2.0.0
 Requires:       python3-redis
 Requires:       python3-retrying
 Requires:       python3-six >= 1.9.0

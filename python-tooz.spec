@@ -83,14 +83,22 @@ License:    ASL 2.0
 BuildRequires:  python-sphinx
 BuildRequires:  python-openstackdocstheme
 BuildRequires:  python-msgpack
-BuildRequires:  python-enum
+BuildRequires:  python-enum34
+BuildRequires:  python-fasteners
 BuildRequires:  python-futures
 BuildRequires:  python-futurist
 BuildRequires:  python-msgpack
 BuildRequires:  python-oslo-serialization
 BuildRequires:  python-oslo-utils
 BuildRequires:  python-stevedore >= 1.5.0
+BuildRequires:  python-sysv_ipc
 BuildRequires:  python-tenacity
+BuildRequires:  python-voluptuous
+BuildRequires:  python-pymemcache
+BuildRequires:  python-PyMySQL
+BuildRequires:  python-psycopg2
+BuildRequires:  python-zake
+BuildRequires:  python-redis
 
 %description doc
 The Tooz project aims at centralizing the most common distributed primitives

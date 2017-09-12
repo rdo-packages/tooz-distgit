@@ -53,7 +53,6 @@ BuildRequires:  python3-setuptools
 BuildRequires:  python3-pbr >= 2.0.0
 Requires:       python3-babel
 Requires:       python3-fasteners
-Requires:       python3-futures
 Requires:       python3-futurist
 Requires:       python3-iso8601 >= 0.1.9
 Requires:       python3-msgpack

@@ -8,6 +8,11 @@
 %global with_python3 1
 %endif
 
+%global common_desc \
+The Tooz project aims at centralizing the most common distributed primitives \
+like group membership protocol, lock service and leader election by providing \
+a coordination API helping developers to build distributed applications.
+
 Name:           python-%{pypi_name}
 Version:        XXX
 Release:        XXX
@@ -41,9 +46,7 @@ Requires:       python-voluptuous >= 0.8.9
 Requires:       python-zake
 
 %description
-The Tooz project aims at centralizing the most common distributed primitives
-like group membership protocol, lock service and leader election by providing
-a coordination API helping developers to build distributed applications.
+%{common_desc}
 
 %if 0%{?with_python3}
 %package -n python3-%{pypi_name}
@@ -68,9 +71,7 @@ Requires:       python3-voluptuous >= 0.8.9
 Requires:       python3-zake
 
 %description -n python3-%{pypi_name}
-The Tooz project aims at centralizing the most common distributed primitives
-like group membership protocol, lock service and leader election by providing
-a coordination API helping developers to build distributed applications.
+%{common_desc}
 %endif
 
 %if %{?with_doc}
@@ -100,9 +101,7 @@ BuildRequires:  python-zake
 BuildRequires:  python-redis
 
 %description doc
-The Tooz project aims at centralizing the most common distributed primitives
-like group membership protocol, lock service and leader election by providing
-a coordination API helping developers to build distributed applications.
+%{common_desc}
 
 This package contains documentation in HTML format.
 %endif

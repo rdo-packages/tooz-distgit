@@ -8,7 +8,7 @@
 %endif
 
 Name:           python-%{pypi_name}
-Version:        1.43.1
+Version:        1.43.2
 Release:        1%{?dist}
 Summary:        Coordination library for distributed systems
 
@@ -139,6 +139,9 @@ rm -fr %{buildroot}%{python3_sitelib}/%{pypi_name}/tests/
 %doc html
 
 %changelog
+* Tue Oct 10 2017 rdo-trunk <javier.pena@redhat.com> 1.43.2-1
+- Update to 1.43.2
+
 * Mon Jul 10 2017 Pradeep Kilambi <pkilambi@redhat.com> 1.43.1-1
 - Update to 1.43.1
 

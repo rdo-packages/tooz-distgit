@@ -24,26 +24,34 @@ Source0:        https://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{upstr
 BuildArch:      noarch
 
 BuildRequires:  python2-devel
-BuildRequires:  python-setuptools
-BuildRequires:  python-pbr >= 2.0.0
+BuildRequires:  python2-setuptools
+BuildRequires:  python2-pbr >= 2.0.0
 BuildRequires:  git
-Requires:       python-babel
+Requires:       python2-babel
+Requires:       python2-fasteners
+Requires:       python2-futurist
+Requires:       python2-iso8601 >= 0.1.9
+Requires:       python2-oslo-serialization >= 1.10.0
+Requires:       python2-oslo-utils >= 3.15.0
+Requires:       python2-pbr >= 2.0.0
+Requires:       python2-six >= 1.9.0
+Requires:       python2-stevedore >= 1.16.0
+Requires:       python2-tenacity >= 3.2.1
+Requires:       python2-voluptuous >= 0.8.9
+Requires:       python2-zake
+%if 0%{?fedora} > 0
+Requires:       python2-enum34
+Requires:       python2-futures
+Requires:       python2-msgpack
+Requires:       python2-redis
+Requires:       python2-retrying
+%else
 Requires:       python-enum34
-Requires:       python-fasteners
 Requires:       python-futures
-Requires:       python-futurist
-Requires:       python-iso8601 >= 0.1.9
 Requires:       python-msgpack
-Requires:       python-oslo-serialization >= 1.10.0
-Requires:       python-oslo-utils >= 3.15.0
-Requires:       python-pbr >= 2.0.0
 Requires:       python-redis
 Requires:       python-retrying
-Requires:       python-six >= 1.9.0
-Requires:       python-stevedore >= 1.16.0
-Requires:       python-tenacity >= 3.2.1
-Requires:       python-voluptuous >= 0.8.9
-Requires:       python-zake
+%endif
 
 %description
 %{common_desc}
@@ -80,25 +88,32 @@ Summary:    Documentation for %{name}
 Group:      Documentation
 License:    ASL 2.0
 
-BuildRequires:  python-sphinx
-BuildRequires:  python-openstackdocstheme
+BuildRequires:  python2-sphinx
+BuildRequires:  python2-openstackdocstheme
+BuildRequires:  python2-fasteners
+BuildRequires:  python2-futurist
+BuildRequires:  python2-oslo-serialization
+BuildRequires:  python2-oslo-utils
+BuildRequires:  python2-stevedore >= 1.5.0
+BuildRequires:  python2-sysv_ipc
+BuildRequires:  python2-tenacity
+BuildRequires:  python2-voluptuous
+BuildRequires:  python2-pymemcache
+BuildRequires:  python2-PyMySQL
+BuildRequires:  python2-zake
+%if 0%{?fedora} > 0
+BuildRequires:  python2-msgpack
+BuildRequires:  python2-enum34
+BuildRequires:  python2-futures
+BuildRequires:  python2-psycopg2
+BuildRequires:  python2-redis
+%else
 BuildRequires:  python-msgpack
 BuildRequires:  python-enum34
-BuildRequires:  python-fasteners
 BuildRequires:  python-futures
-BuildRequires:  python-futurist
-BuildRequires:  python-msgpack
-BuildRequires:  python-oslo-serialization
-BuildRequires:  python-oslo-utils
-BuildRequires:  python-stevedore >= 1.5.0
-BuildRequires:  python-sysv_ipc
-BuildRequires:  python-tenacity
-BuildRequires:  python-voluptuous
-BuildRequires:  python-pymemcache
-BuildRequires:  python-PyMySQL
 BuildRequires:  python-psycopg2
-BuildRequires:  python-zake
 BuildRequires:  python-redis
+%endif
 
 %description doc
 %{common_desc}

@@ -15,7 +15,7 @@ a coordination API helping developers to build distributed applications.
 
 Name:           python-%{pypi_name}
 Version:        1.59.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Coordination library for distributed systems
 
 License:        ASL 2.0
@@ -23,10 +23,18 @@ URL:            https://tooz.readthedocs.org
 Source0:        https://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{upstream_version}.tar.gz
 BuildArch:      noarch
 
+BuildRequires:  git
+
+%description
+%{common_desc}
+
+%package -n     python2-%{pypi_name}
+Summary:        Coordination library for distributed systems
+%{?python_provide:%python_provide python2-%{pypi_name}}
+
 BuildRequires:  python2-devel
 BuildRequires:  python2-setuptools
 BuildRequires:  python2-pbr >= 2.0.0
-BuildRequires:  git
 Requires:       python2-babel
 Requires:       python2-fasteners
 Requires:       python2-futurist
@@ -53,7 +61,7 @@ Requires:       python-redis
 Requires:       python-retrying
 %endif
 
-%description
+%description -n python2-%{pypi_name}
 %{common_desc}
 
 %if 0%{?with_python3}
@@ -162,7 +170,7 @@ rm -fr %{buildroot}%{python3_sitelib}/%{pypi_name}/tests/
 
 
 
-%files
+%files -n python2-%{pypi_name}
 %license LICENSE
 %doc README.rst
 %{python2_sitelib}/%{pypi_name}
@@ -183,6 +191,9 @@ rm -fr %{buildroot}%{python3_sitelib}/%{pypi_name}/tests/
 %endif
 
 %changelog
+* Mon Feb 12 2018 Alfredo Moralejo <amoralej@redhat.com> 1.59.0-2
+- Renamed python-tooz to python2-tooz
+
 * Sat Feb 10 2018 RDO <dev@lists.rdoproject.org> 1.59.0-1
 - Update to 1.59.0
 

@@ -14,8 +14,8 @@ like group membership protocol, lock service and leader election by providing \
 a coordination API helping developers to build distributed applications.
 
 Name:           python-%{pypi_name}
-Version:        1.59.0
-Release:        2%{?dist}
+Version:        1.60.0
+Release:        1%{?dist}
 Summary:        Coordination library for distributed systems
 
 License:        ASL 2.0
@@ -191,6 +191,9 @@ rm -fr %{buildroot}%{python3_sitelib}/%{pypi_name}/tests/
 %endif
 
 %changelog
+* Sat Feb 17 2018 RDO <dev@lists.rdoproject.org> 1.60.0-1
+- Update to 1.60.0
+
 * Mon Feb 12 2018 Alfredo Moralejo <amoralej@redhat.com> 1.59.0-2
 - Renamed python-tooz to python2-tooz
 

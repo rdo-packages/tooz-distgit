@@ -141,6 +141,8 @@ find %{py3dir} -name '*.py' | xargs sed -i '1s|^#!python|#!%{__python3}|'
 
 
 %build
+rm -f requirements.txt
+
 %{__python2} setup.py build
 
 %if 0%{?with_python3}

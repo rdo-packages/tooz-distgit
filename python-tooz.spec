@@ -14,8 +14,8 @@ like group membership protocol, lock service and leader election by providing \
 a coordination API helping developers to build distributed applications.
 
 Name:           python-%{pypi_name}
-Version:        XXX
-Release:        XXX
+Version:        1.62.0
+Release:        1%{?dist}
 Summary:        Coordination library for distributed systems
 
 License:        ASL 2.0
@@ -132,6 +132,8 @@ This package contains documentation in HTML format.
 
 %prep
 %autosetup -n %{pypi_name}-%{upstream_version} -S git
+# Let RPM handle the requirements
+rm -f {test-,}requirements.txt
 
 %if 0%{?with_python3}
 rm -rf %{py3dir}
@@ -191,3 +193,6 @@ rm -fr %{buildroot}%{python3_sitelib}/%{pypi_name}/tests/
 %endif
 
 %changelog
+* Fri Aug 10 2018 RDO <dev@lists.rdoproject.org> 1.62.0-1
+- Update to 1.62.0
+

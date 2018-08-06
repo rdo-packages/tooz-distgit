@@ -132,6 +132,8 @@ This package contains documentation in HTML format.
 
 %prep
 %autosetup -n %{pypi_name}-%{upstream_version} -S git
+# Let RPM handle the requirements
+rm -f {test-,}requirements.txt
 
 %if 0%{?with_python3}
 rm -rf %{py3dir}

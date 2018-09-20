@@ -15,7 +15,7 @@ a coordination API helping developers to build distributed applications.
 
 Name:           python-%{pypi_name}
 Version:        1.62.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Coordination library for distributed systems
 
 License:        ASL 2.0
@@ -50,13 +50,13 @@ Requires:       python2-zake
 %if 0%{?fedora} > 0
 Requires:       python2-enum34
 Requires:       python2-futures
-Requires:       python2-msgpack
+Requires:       python2-msgpack >= 0.4.0
 Requires:       python2-redis
 Requires:       python2-retrying
 %else
 Requires:       python-enum34
 Requires:       python-futures
-Requires:       python-msgpack
+Requires:       python-msgpack >= 0.4.0
 Requires:       python-redis
 Requires:       python-retrying
 %endif
@@ -74,7 +74,7 @@ Requires:       python3-babel
 Requires:       python3-fasteners
 Requires:       python3-futurist
 Requires:       python3-iso8601 >= 0.1.9
-Requires:       python3-msgpack
+Requires:       python3-msgpack >= 0.4.0
 Requires:       python3-oslo-serialization >= 1.10.0
 Requires:       python3-oslo-utils >= 3.15.0
 Requires:       python3-pbr >= 2.0.0
@@ -110,13 +110,13 @@ BuildRequires:  python2-pymemcache
 BuildRequires:  python2-PyMySQL
 BuildRequires:  python2-zake
 %if 0%{?fedora} > 0
-BuildRequires:  python2-msgpack
+BuildRequires:  python2-msgpack >= 0.4.0
 BuildRequires:  python2-enum34
 BuildRequires:  python2-futures
 BuildRequires:  python2-psycopg2
 BuildRequires:  python2-redis
 %else
-BuildRequires:  python-msgpack
+BuildRequires:  python-msgpack >= 0.4.0
 BuildRequires:  python-enum34
 BuildRequires:  python-futures
 BuildRequires:  python-psycopg2
@@ -193,6 +193,9 @@ rm -fr %{buildroot}%{python3_sitelib}/%{pypi_name}/tests/
 %endif
 
 %changelog
+* Thu Sep 20 2018 RDO <dev@lists.rdoproject.org> 1.62.0-2
+- Update msgpack requirement to >= 0.4.0
+
 * Fri Aug 10 2018 RDO <dev@lists.rdoproject.org> 1.62.0-1
 - Update to 1.62.0
 

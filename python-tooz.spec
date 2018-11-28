@@ -1,12 +1,19 @@
+# Macros for py2/py3 compatibility
+%if 0%{?fedora} || 0%{?rhel} > 7
+%global pyver %{python3_pkgversion}
+%else
+%global pyver 2
+%endif
+%global pyver_bin python%{pyver}
+%global pyver_sitelib %python%{pyver}_sitelib
+%global pyver_install %py%{pyver}_install
+%global pyver_build %py%{pyver}_build
+# End of macros for py2/py3 compatibility
 # Created by pyp2rpm-1.0.1
 %global pypi_name tooz
 %global with_doc 0
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
-
-%if 0%{?fedora} >= 24
-%global with_python3 1
-%endif
 
 %global common_desc \
 The Tooz project aims at centralizing the most common distributed primitives \
@@ -28,67 +35,40 @@ BuildRequires:  git
 %description
 %{common_desc}
 
-%package -n     python2-%{pypi_name}
+%package -n     python%{pyver}-%{pypi_name}
 Summary:        Coordination library for distributed systems
-%{?python_provide:%python_provide python2-%{pypi_name}}
+%{?python_provide:%python_provide python%{pyver}-%{pypi_name}}
 
-BuildRequires:  python2-devel
-BuildRequires:  python2-setuptools
-BuildRequires:  python2-pbr >= 2.0.0
-Requires:       python2-babel
-Requires:       python2-fasteners
-Requires:       python2-futurist
-Requires:       python2-iso8601 >= 0.1.9
-Requires:       python2-oslo-serialization >= 1.10.0
-Requires:       python2-oslo-utils >= 3.15.0
-Requires:       python2-pbr >= 2.0.0
-Requires:       python2-six >= 1.9.0
-Requires:       python2-stevedore >= 1.16.0
-Requires:       python2-tenacity >= 3.2.1
-Requires:       python2-voluptuous >= 0.8.9
-Requires:       python2-zake
-%if 0%{?fedora} > 0
-Requires:       python2-enum34
-Requires:       python2-futures
-Requires:       python2-msgpack >= 0.4.0
-Requires:       python2-redis
-Requires:       python2-retrying
-%else
+BuildRequires:  python%{pyver}-devel
+BuildRequires:  python%{pyver}-setuptools
+BuildRequires:  python%{pyver}-pbr >= 2.0.0
+Requires:       python%{pyver}-babel
+Requires:       python%{pyver}-fasteners
+Requires:       python%{pyver}-futurist
+Requires:       python%{pyver}-iso8601 >= 0.1.9
+Requires:       python%{pyver}-oslo-serialization >= 1.10.0
+Requires:       python%{pyver}-oslo-utils >= 3.15.0
+Requires:       python%{pyver}-pbr >= 2.0.0
+Requires:       python%{pyver}-six >= 1.9.0
+Requires:       python%{pyver}-stevedore >= 1.16.0
+Requires:       python%{pyver}-tenacity >= 3.2.1
+Requires:       python%{pyver}-voluptuous >= 0.8.9
+Requires:       python%{pyver}-zake
+Requires:       python%{pyver}-futures
+Requires:       python%{pyver}-msgpack >= 0.4.0
+
+# Handle python2 exception
+%if %{pyver} == 2
 Requires:       python-enum34
-Requires:       python-futures
-Requires:       python-msgpack >= 0.4.0
 Requires:       python-redis
 Requires:       python-retrying
+%else
+Requires:       python%{pyver}-redis
+Requires:       python%{pyver}-retrying
 %endif
 
-%description -n python2-%{pypi_name}
+%description -n python%{pyver}-%{pypi_name}
 %{common_desc}
-
-%if 0%{?with_python3}
-%package -n python3-%{pypi_name}
-Summary:        Coordination library for distributed systems
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-pbr >= 2.0.0
-Requires:       python3-babel
-Requires:       python3-fasteners
-Requires:       python3-futurist
-Requires:       python3-iso8601 >= 0.1.9
-Requires:       python3-msgpack >= 0.4.0
-Requires:       python3-oslo-serialization >= 1.10.0
-Requires:       python3-oslo-utils >= 3.15.0
-Requires:       python3-pbr >= 2.0.0
-Requires:       python3-redis
-Requires:       python3-retrying
-Requires:       python3-six >= 1.9.0
-Requires:       python3-stevedore >= 1.16.0
-Requires:       python3-tenacity >= 3.2.1
-Requires:       python3-voluptuous >= 0.8.9
-Requires:       python3-zake
-
-%description -n python3-%{pypi_name}
-%{common_desc}
-%endif
 
 %if %{?with_doc}
 %package doc
@@ -96,31 +76,30 @@ Summary:    Documentation for %{name}
 Group:      Documentation
 License:    ASL 2.0
 
-BuildRequires:  python2-sphinx
-BuildRequires:  python2-openstackdocstheme
-BuildRequires:  python2-fasteners
-BuildRequires:  python2-futurist
-BuildRequires:  python2-oslo-serialization
-BuildRequires:  python2-oslo-utils
-BuildRequires:  python2-stevedore >= 1.5.0
-BuildRequires:  python2-sysv_ipc
-BuildRequires:  python2-tenacity
-BuildRequires:  python2-voluptuous
-BuildRequires:  python2-pymemcache
-BuildRequires:  python2-PyMySQL
-BuildRequires:  python2-zake
-%if 0%{?fedora} > 0
-BuildRequires:  python2-msgpack >= 0.4.0
-BuildRequires:  python2-enum34
-BuildRequires:  python2-futures
-BuildRequires:  python2-psycopg2
-BuildRequires:  python2-redis
-%else
-BuildRequires:  python-msgpack >= 0.4.0
+BuildRequires:  python%{pyver}-sphinx
+BuildRequires:  python%{pyver}-openstackdocstheme
+BuildRequires:  python%{pyver}-fasteners
+BuildRequires:  python%{pyver}-futurist
+BuildRequires:  python%{pyver}-oslo-serialization
+BuildRequires:  python%{pyver}-oslo-utils
+BuildRequires:  python%{pyver}-stevedore >= 1.5.0
+BuildRequires:  python%{pyver}-sysv_ipc
+BuildRequires:  python%{pyver}-tenacity
+BuildRequires:  python%{pyver}-voluptuous
+BuildRequires:  python%{pyver}-pymemcache
+BuildRequires:  python%{pyver}-PyMySQL
+BuildRequires:  python%{pyver}-zake
+BuildRequires:  python%{pyver}-msgpack >= 0.4.0
+BuildRequires:  python%{pyver}-futures
+
+# Handle python2 exception
+%if %{pyver} == 2
 BuildRequires:  python-enum34
-BuildRequires:  python-futures
 BuildRequires:  python-psycopg2
 BuildRequires:  python-redis
+%else
+BuildRequires:  python%{pyver}-psycopg2
+BuildRequires:  python%{pyver}-redis
 %endif
 
 %description doc
@@ -135,56 +114,29 @@ This package contains documentation in HTML format.
 # Let RPM handle the requirements
 rm -f {test-,}requirements.txt
 
-%if 0%{?with_python3}
-rm -rf %{py3dir}
-cp -a . %{py3dir}
-find %{py3dir} -name '*.py' | xargs sed -i '1s|^#!python|#!%{__python3}|'
-%endif # with_python3
+find . -name '*.py' | xargs sed -i '1s|^#!python|#!%{pyver_bin}|'
 
 
 %build
-%{__python2} setup.py build
-
-%if 0%{?with_python3}
-pushd %{py3dir}
-%{__python3} setup.py build
-popd
-%endif
+%{pyver_build}
 
 %if %{?with_doc}
 # generate html docs
-%{__python2} setup.py build_sphinx -b html
-# remove the sphinx-build leftovers
+%{pyver_bin} setup.py build_sphinx -b html
+# remove the sphinx-build-%{pyver} leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 %endif
 
 
 %install
-%{__python2} setup.py install --skip-build --root %{buildroot}
-rm -fr %{buildroot}%{python2_sitelib}/%{pypi_name}/tests/
+%{pyver_install}
+rm -fr %{buildroot}%{pyver_sitelib}/%{pypi_name}/tests/
 
-%if 0%{?with_python3}
-pushd %{py3dir}
-%{__python3} setup.py install --skip-build --root %{buildroot}
-popd
-rm -fr %{buildroot}%{python3_sitelib}/%{pypi_name}/tests/
-%endif
-
-
-
-%files -n python2-%{pypi_name}
+%files -n python%{pyver}-%{pypi_name}
 %license LICENSE
 %doc README.rst
-%{python2_sitelib}/%{pypi_name}
-%{python2_sitelib}/%{pypi_name}-*.egg-info
-
-%if 0%{?with_python3}
-%files -n python3-%{pypi_name}
-%license LICENSE
-%doc README.rst
-%{python3_sitelib}/%{pypi_name}
-%{python3_sitelib}/%{pypi_name}-*.egg-info
-%endif
+%{pyver_sitelib}/%{pypi_name}
+%{pyver_sitelib}/%{pypi_name}-*.egg-info
 
 %if %{?with_doc}
 %files doc

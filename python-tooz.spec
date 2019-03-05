@@ -65,10 +65,8 @@ Requires:       python%{pyver}-futures
 %if %{pyver} == 2
 Requires:       python-enum34
 Requires:       python-redis
-Requires:       python-retrying
 %else
 Requires:       python%{pyver}-redis
-Requires:       python%{pyver}-retrying
 %endif
 
 %description -n python%{pyver}-%{pypi_name}

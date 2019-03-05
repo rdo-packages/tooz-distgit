@@ -42,10 +42,8 @@ Summary:        Coordination library for distributed systems
 BuildRequires:  python%{pyver}-devel
 BuildRequires:  python%{pyver}-setuptools
 BuildRequires:  python%{pyver}-pbr >= 2.0.0
-Requires:       python%{pyver}-babel
 Requires:       python%{pyver}-fasteners
 Requires:       python%{pyver}-futurist
-Requires:       python%{pyver}-iso8601 >= 0.1.9
 Requires:       python%{pyver}-oslo-serialization >= 1.10.0
 Requires:       python%{pyver}-oslo-utils >= 3.15.0
 Requires:       python%{pyver}-pbr >= 2.0.0
@@ -65,10 +63,8 @@ Requires:       python%{pyver}-futures
 %if %{pyver} == 2
 Requires:       python-enum34
 Requires:       python-redis
-Requires:       python-retrying
 %else
 Requires:       python%{pyver}-redis
-Requires:       python%{pyver}-retrying
 %endif
 
 %description -n python%{pyver}-%{pypi_name}

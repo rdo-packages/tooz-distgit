@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8b6e7c44_1ab47f05",
+        "filename": "python-tooz.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 403
+      },
+      "writtenOn": "2019-03-07T11:29:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63dc6a85_1cd5b19d",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 36
+      },
+      "revId": "23acd5303e15baf10e681c08e9bbef61453238c4",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "361827ef_2d014d08",
         "filename": "python-tooz.spec",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-03-07T11:04:19Z",
       "side": 1,
       "message": "iso8601 can be removed.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 47
+      },
+      "revId": "23acd5303e15baf10e681c08e9bbef61453238c4",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb2e482b_2171dbca",
+        "filename": "python-tooz.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 403
+      },
+      "writtenOn": "2019-03-07T11:29:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "361827ef_2d014d08",
       "range": {
         "startLine": 48,
         "startChar": 0,

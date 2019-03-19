@@ -14,8 +14,8 @@ like group membership protocol, lock service and leader election by providing \
 a coordination API helping developers to build distributed applications.
 
 Name:           python-%{pypi_name}
-Version:        1.62.0
-Release:        2%{?dist}
+Version:        1.62.1
+Release:        1%{?dist}
 Summary:        Coordination library for distributed systems
 
 License:        ASL 2.0
@@ -193,6 +193,9 @@ rm -fr %{buildroot}%{python3_sitelib}/%{pypi_name}/tests/
 %endif
 
 %changelog
+* Tue Mar 19 2019 RDO <dev@lists.rdoproject.org> 1.62.1-1
+- Update to 1.62.1
+
 * Thu Sep 20 2018 RDO <dev@lists.rdoproject.org> 1.62.0-2
 - Update msgpack requirement to >= 0.4.0
 

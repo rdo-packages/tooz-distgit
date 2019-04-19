@@ -9,7 +9,7 @@
 %endif
 
 Name:           python-%{pypi_name}
-Version:        1.58.0
+Version:        1.58.1
 Release:        1%{?dist}
 Summary:        Coordination library for distributed systems
 
@@ -170,6 +170,9 @@ rm -fr %{buildroot}%{python3_sitelib}/%{pypi_name}/tests/
 %endif
 
 %changelog
+* Fri Apr 19 2019 RDO <dev@lists.rdoproject.org> 1.58.1-1
+- Update to 1.58.1
+
 * Mon Aug 14 2017 Alfredo Moralejo <amoralej@redhat.com> 1.58.0-1
 - Update to 1.58.0
 

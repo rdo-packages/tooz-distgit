@@ -46,7 +46,7 @@ Requires:       python%{pyver}-fasteners
 Requires:       python%{pyver}-futurist
 Requires:       python%{pyver}-oslo-serialization >= 1.10.0
 Requires:       python%{pyver}-oslo-utils >= 3.15.0
-Requires:       python%{pyver}-pbr >= 2.0.0
+Requires:       python%{pyver}-pbr >= 1.6
 Requires:       python%{pyver}-six >= 1.9.0
 Requires:       python%{pyver}-stevedore >= 1.16.0
 Requires:       python%{pyver}-tenacity >= 3.2.1

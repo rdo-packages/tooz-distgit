@@ -1,14 +1,3 @@
-# Macros for py2/py3 compatibility
-%if 0%{?fedora} || 0%{?rhel} > 7
-%global pyver %{python3_pkgversion}
-%else
-%global pyver 2
-%endif
-%global pyver_bin python%{pyver}
-%global pyver_sitelib %python%{pyver}_sitelib
-%global pyver_install %py%{pyver}_install
-%global pyver_build %py%{pyver}_build
-# End of macros for py2/py3 compatibility
 # Created by pyp2rpm-1.0.1
 %global pypi_name tooz
 %global with_doc 0
@@ -35,39 +24,29 @@ BuildRequires:  git
 %description
 %{common_desc}
 
-%package -n     python%{pyver}-%{pypi_name}
+%package -n     python3-%{pypi_name}
 Summary:        Coordination library for distributed systems
-%{?python_provide:%python_provide python%{pyver}-%{pypi_name}}
+%{?python_provide:%python_provide python3-%{pypi_name}}
 
-BuildRequires:  python%{pyver}-devel
-BuildRequires:  python%{pyver}-setuptools
-BuildRequires:  python%{pyver}-pbr >= 2.0.0
-Requires:       python%{pyver}-fasteners
-Requires:       python%{pyver}-futurist
-Requires:       python%{pyver}-oslo-serialization >= 1.10.0
-Requires:       python%{pyver}-oslo-utils >= 3.15.0
-Requires:       python%{pyver}-pbr >= 1.6
-Requires:       python%{pyver}-six >= 1.9.0
-Requires:       python%{pyver}-stevedore >= 1.16.0
-Requires:       python%{pyver}-tenacity >= 3.2.1
-Requires:       python%{pyver}-voluptuous >= 0.8.9
-Requires:       python%{pyver}-zake
-Requires:       python%{pyver}-msgpack >= 0.4.0
+BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-pbr >= 2.0.0
+Requires:       python3-fasteners
+Requires:       python3-futurist
+Requires:       python3-oslo-serialization >= 1.10.0
+Requires:       python3-oslo-utils >= 3.15.0
+Requires:       python3-pbr >= 1.6
+Requires:       python3-six >= 1.9.0
+Requires:       python3-stevedore >= 1.16.0
+Requires:       python3-tenacity >= 3.2.1
+Requires:       python3-voluptuous >= 0.8.9
+Requires:       python3-zake
+Requires:       python3-msgpack >= 0.4.0
 
-# Handle python2 exception
-%if %{pyver} == 2
-Requires:       python%{pyver}-futures
-%endif
 
-# Handle python2 exception
-%if %{pyver} == 2
-Requires:       python-enum34
-Requires:       python-redis
-%else
-Requires:       python%{pyver}-redis
-%endif
+Requires:       python3-redis
 
-%description -n python%{pyver}-%{pypi_name}
+%description -n python3-%{pypi_name}
 %{common_desc}
 
 %if %{?with_doc}
@@ -76,35 +55,24 @@ Summary:    Documentation for %{name}
 Group:      Documentation
 License:    ASL 2.0
 
-BuildRequires:  python%{pyver}-sphinx
-BuildRequires:  python%{pyver}-openstackdocstheme
-BuildRequires:  python%{pyver}-fasteners
-BuildRequires:  python%{pyver}-futurist
-BuildRequires:  python%{pyver}-oslo-serialization
-BuildRequires:  python%{pyver}-oslo-utils
-BuildRequires:  python%{pyver}-stevedore >= 1.5.0
-BuildRequires:  python%{pyver}-sysv_ipc
-BuildRequires:  python%{pyver}-tenacity
-BuildRequires:  python%{pyver}-voluptuous
-BuildRequires:  python%{pyver}-pymemcache
-BuildRequires:  python%{pyver}-PyMySQL
-BuildRequires:  python%{pyver}-zake
-BuildRequires:  python%{pyver}-msgpack >= 0.4.0
+BuildRequires:  python3-sphinx
+BuildRequires:  python3-openstackdocstheme
+BuildRequires:  python3-fasteners
+BuildRequires:  python3-futurist
+BuildRequires:  python3-oslo-serialization
+BuildRequires:  python3-oslo-utils
+BuildRequires:  python3-stevedore >= 1.5.0
+BuildRequires:  python3-sysv_ipc
+BuildRequires:  python3-tenacity
+BuildRequires:  python3-voluptuous
+BuildRequires:  python3-pymemcache
+BuildRequires:  python3-PyMySQL
+BuildRequires:  python3-zake
+BuildRequires:  python3-msgpack >= 0.4.0
 
-# Handle python2 exception
-%if %{pyver} == 2
-BuildRequires:  python%{pyver}-futures
-%endif
 
-# Handle python2 exception
-%if %{pyver} == 2
-BuildRequires:  python-enum34
-BuildRequires:  python-psycopg2
-BuildRequires:  python-redis
-%else
-BuildRequires:  python%{pyver}-psycopg2
-BuildRequires:  python%{pyver}-redis
-%endif
+BuildRequires:  python3-psycopg2
+BuildRequires:  python3-redis
 
 %description doc
 %{common_desc}
@@ -118,29 +86,29 @@ This package contains documentation in HTML format.
 # Let RPM handle the requirements
 rm -f {test-,}requirements.txt
 
-find . -name '*.py' | xargs sed -i '1s|^#!python|#!%{pyver_bin}|'
+find . -name '*.py' | xargs sed -i '1s|^#!python|#!%{__python3}|'
 
 
 %build
-%{pyver_build}
+%{py3_build}
 
 %if %{?with_doc}
 # generate html docs
-%{pyver_bin} setup.py build_sphinx -b html
-# remove the sphinx-build-%{pyver} leftovers
+%{__python3} setup.py build_sphinx -b html
+# remove the sphinx-build-3 leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 %endif
 
 
 %install
-%{pyver_install}
-rm -fr %{buildroot}%{pyver_sitelib}/%{pypi_name}/tests/
+%{py3_install}
+rm -fr %{buildroot}%{python3_sitelib}/%{pypi_name}/tests/
 
-%files -n python%{pyver}-%{pypi_name}
+%files -n python3-%{pypi_name}
 %license LICENSE
 %doc README.rst
-%{pyver_sitelib}/%{pypi_name}
-%{pyver_sitelib}/%{pypi_name}-*.egg-info
+%{python3_sitelib}/%{pypi_name}
+%{python3_sitelib}/%{pypi_name}-*.egg-info
 
 %if %{?with_doc}
 %files doc

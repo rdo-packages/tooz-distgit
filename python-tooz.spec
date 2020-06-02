@@ -21,7 +21,7 @@ like group membership protocol, lock service and leader election by providing \
 a coordination API helping developers to build distributed applications.
 
 Name:           python-%{pypi_name}
-Version:        1.66.2
+Version:        1.66.3
 Release:        1%{?dist}
 Summary:        Coordination library for distributed systems
 
@@ -149,6 +149,9 @@ rm -fr %{buildroot}%{pyver_sitelib}/%{pypi_name}/tests/
 %endif
 
 %changelog
+* Tue Jun 02 2020 RDO <dev@lists.rdoproject.org> 1.66.3-1
+- Update to 1.66.3
+
 * Thu Sep 19 2019 RDO <dev@lists.rdoproject.org> 1.66.2-1
 - Update to 1.66.2
 

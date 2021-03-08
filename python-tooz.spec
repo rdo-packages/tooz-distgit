@@ -47,7 +47,7 @@ BuildRequires:  python3-pbr >= 2.0.0
 Requires:       python3-fasteners
 Requires:       python3-futurist
 Requires:       python3-oslo-serialization >= 1.10.0
-Requires:       python3-oslo-utils >= 3.15.0
+Requires:       python3-oslo-utils >= 4.7.0
 Requires:       python3-pbr >= 1.6
 Requires:       python3-stevedore >= 1.16.0
 Requires:       python3-tenacity >= 3.2.1

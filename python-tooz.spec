@@ -1,6 +1,6 @@
 # Created by pyp2rpm-1.0.1
 %{!?sources_gpg: %{!?dlrn:%global sources_gpg 1} }
-%global sources_gpg_sign 0x4c29ff0e437f3351fd82bdf47c5a3bc787dc7035
+%global sources_gpg_sign 0x01527a34f0d0080f8a5db8d6eb6c5df21b4b6363
 %global pypi_name tooz
 %global with_doc 0
 
@@ -12,7 +12,7 @@ like group membership protocol, lock service and leader election by providing \
 a coordination API helping developers to build distributed applications.
 
 Name:           python-%{pypi_name}
-Version:        2.8.1
+Version:        2.8.2
 Release:        1%{?dist}
 Summary:        Coordination library for distributed systems
 
@@ -133,6 +133,9 @@ rm -fr %{buildroot}%{python3_sitelib}/%{pypi_name}/tests/
 %endif
 
 %changelog
+* Fri Nov 26 2021 RDO <dev@lists.rdoproject.org> 2.8.2-1
+- Update to 2.8.2
+
 * Fri May 21 2021 RDO <dev@lists.rdoproject.org> 2.8.1-1
 - Update to 2.8.1
 

@@ -1,6 +1,6 @@
 # Created by pyp2rpm-1.0.1
 %{!?sources_gpg: %{!?dlrn:%global sources_gpg 1} }
-%global sources_gpg_sign 0x2426b928085a020d8a90d0d879ab7008d0896c8a
+%global sources_gpg_sign 0x01527a34f0d0080f8a5db8d6eb6c5df21b4b6363
 %global pypi_name tooz
 %global with_doc 0
 
@@ -12,8 +12,8 @@ like group membership protocol, lock service and leader election by providing \
 a coordination API helping developers to build distributed applications.
 
 Name:           python-%{pypi_name}
-Version:        XXX
-Release:        XXX
+Version:        2.10.1
+Release:        1%{?dist}
 Summary:        Coordination library for distributed systems
 
 License:        ASL 2.0
@@ -133,3 +133,6 @@ rm -fr %{buildroot}%{python3_sitelib}/%{pypi_name}/tests/
 %endif
 
 %changelog
+* Mon Mar 14 2022 RDO <dev@lists.rdoproject.org> 2.10.1-1
+- Update to 2.10.1
+

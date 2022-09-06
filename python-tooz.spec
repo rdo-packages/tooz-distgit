@@ -50,7 +50,7 @@ Requires:       python3-oslo-serialization >= 1.10.0
 Requires:       python3-oslo-utils >= 4.7.0
 Requires:       python3-pbr >= 1.6
 Requires:       python3-stevedore >= 1.16.0
-Requires:       python3-tenacity >= 3.2.1
+Requires:       python3-tenacity >= 5.0.0
 Requires:       python3-voluptuous >= 0.8.9
 Requires:       python3-zake
 Requires:       python3-msgpack >= 0.4.0

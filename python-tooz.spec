@@ -5,6 +5,12 @@
 %global with_doc 0
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
+# we are excluding some BRs from automatic generator
+%global excluded_brs doc8 bandit pre-commit hacking flake8-import-order pifpaf
+# Exclude sphinx from BRs if docs are disabled
+%if ! 0%{?with_doc}
+%global excluded_brs %{excluded_brs} sphinx openstackdocstheme
+%endif
 
 %global common_desc \
 The Tooz project aims at centralizing the most common distributed primitives \
@@ -39,24 +45,12 @@ BuildRequires:  git-core
 
 %package -n     python3-%{pypi_name}
 Summary:        Coordination library for distributed systems
-%{?python_provide:%python_provide python3-%{pypi_name}}
 
 BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-pbr >= 2.0.0
-Requires:       python3-fasteners
-Requires:       python3-futurist
-Requires:       python3-oslo-serialization >= 1.10.0
-Requires:       python3-oslo-utils >= 4.7.0
-Requires:       python3-pbr >= 1.6
-Requires:       python3-stevedore >= 1.16.0
-Requires:       python3-tenacity >= 5.0.0
-Requires:       python3-voluptuous >= 0.8.9
-Requires:       python3-zake
-Requires:       python3-msgpack >= 0.4.0
+BuildRequires:  pyproject-rpm-macros
 
-
-Requires:       python3-redis
+Requires:  python3-%{pypi_name}+zake = %{version}-%{release}
+Requires:  python3-%{pypi_name}+redis = %{version}-%{release}
 
 %description -n python3-%{pypi_name}
 %{common_desc}
@@ -67,24 +61,6 @@ Summary:    Documentation for %{name}
 Group:      Documentation
 License:    ASL 2.0
 
-BuildRequires:  python3-sphinx
-BuildRequires:  python3-openstackdocstheme
-BuildRequires:  python3-fasteners
-BuildRequires:  python3-futurist
-BuildRequires:  python3-oslo-serialization
-BuildRequires:  python3-oslo-utils
-BuildRequires:  python3-stevedore >= 1.5.0
-BuildRequires:  python3-sysv_ipc
-BuildRequires:  python3-tenacity
-BuildRequires:  python3-voluptuous
-BuildRequires:  python3-pymemcache
-BuildRequires:  python3-PyMySQL
-BuildRequires:  python3-zake
-BuildRequires:  python3-msgpack >= 0.4.0
-
-
-BuildRequires:  python3-psycopg2
-BuildRequires:  python3-redis
 
 %description doc
 %{common_desc}
@@ -99,32 +75,56 @@ This package contains documentation in HTML format.
 %{gpgverify}  --keyring=%{SOURCE102} --signature=%{SOURCE101} --data=%{SOURCE0}
 %endif
 %autosetup -n %{pypi_name}-%{upstream_version} -S git
-# Let RPM handle the requirements
-rm -f {test-,}requirements.txt
 
 find . -name '*.py' | xargs sed -i '1s|^#!python|#!%{__python3}|'
 
 
+sed -i /^[[:space:]]*-c{env:.*_CONSTRAINTS_FILE.*/d tox.ini
+sed -i "s/^deps = -c{env:.*_CONSTRAINTS_FILE.*/deps =/" tox.ini
+sed -i /^minversion.*/d tox.ini
+sed -i /^requires.*virtualenv.*/d tox.ini
+sed -i '/:[[:space:]]\.\[.*\]/d' tox.ini
+sed -i 's/deps = .\[zake.*/deps =/' tox.ini
+
+# Exclude some bad-known BRs
+for pkg in %{excluded_brs};do
+  for reqfile in doc/requirements.txt test-requirements.txt; do
+    if [ -f $reqfile ]; then
+      sed -i /^${pkg}.*/d $reqfile
+    fi
+  done
+done
+
+# Automatic BR generation
+%generate_buildrequires
+%if 0%{?with_doc}
+  %pyproject_buildrequires -t -e %{default_toxenv},docs
+%else
+  %pyproject_buildrequires -t -e %{default_toxenv}
+%endif
+
 %build
-%{py3_build}
+%pyproject_wheel
 
 %if %{?with_doc}
 # generate html docs
-%{__python3} setup.py build_sphinx -b html
+%tox -e docs
 # remove the sphinx-build-3 leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 %endif
 
 
 %install
-%{py3_install}
+%pyproject_install
 rm -fr %{buildroot}%{python3_sitelib}/%{pypi_name}/tests/
+
+%pyproject_extras_subpkg -n python3-%{pypi_name} zake redis
 
 %files -n python3-%{pypi_name}
 %license LICENSE
 %doc README.rst
 %{python3_sitelib}/%{pypi_name}
-%{python3_sitelib}/%{pypi_name}-*.egg-info
+%{python3_sitelib}/%{pypi_name}-*.dist-info
 
 %if %{?with_doc}
 %files doc

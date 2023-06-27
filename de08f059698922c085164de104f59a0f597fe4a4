@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "45a22f68_9f28104c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 635
+      },
+      "writtenOn": "2023-06-27T12:29:24Z",
+      "side": 1,
+      "message": "Yes that was my attempt in last PS, lemme push the extras in l.96",
+      "parentUuid": "a040756d_be5a326b",
+      "revId": "de08f059698922c085164de104f59a0f597fe4a4",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0e5e42e3_b7ab220c",
         "filename": "python-tooz.spec",
         "patchSetId": 4
@@ -31,6 +49,30 @@
       "writtenOn": "2023-06-27T10:33:39Z",
       "side": 1,
       "message": "we need this extras to build the docs, right?",
+      "range": {
+        "startLine": 94,
+        "startChar": 55,
+        "endLine": 94,
+        "endChar": 81
+      },
+      "revId": "de08f059698922c085164de104f59a0f597fe4a4",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "796d1d8b_64a7e2bd",
+        "filename": "python-tooz.spec",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 635
+      },
+      "writtenOn": "2023-06-27T12:29:24Z",
+      "side": 1,
+      "message": "The idea was to bring back the run-time dep missing as you spotted but I forgot to add in both case. I\u0027m adding it in next PS",
+      "parentUuid": "0e5e42e3_b7ab220c",
       "range": {
         "startLine": 94,
         "startChar": 55,

@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a040756d_be5a326b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2023-06-27T10:33:39Z",
+      "side": 1,
+      "message": "we are losing runtime deps fro extras:\n\n2023-06-26 14:14:03.771813 | rdo-centos-8-stream | python3-async-timeout-4.0.2-5.el9s.noarch\t\t      \u003c\n2023-06-26 14:14:03.771860 | rdo-centos-8-stream | python3-deprecated-1.2.13-3.el9s.noarch\t\t\t      \u003c\n2023-06-26 14:14:03.771872 | rdo-centos-8-stream | python3-kazoo-2.8.0-2.el9s.noarch\t\t\t      \u003c\n2023-06-26 14:14:03.771883 | rdo-centos-8-stream | python3-redis-4.3.4-1.el9s.noarch\t\t\t      \u003c\n2023-06-26 14:14:03.771893 | rdo-centos-8-stream | python3-zake-0.2.2-22.el9s.noarch\t\t\t      \u003c\n\nI think we should add those extras when generating runtime deps? there is some macros configs to add runtime deps from upstream extras without creating new subpackages?\n",
+      "revId": "de08f059698922c085164de104f59a0f597fe4a4",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e5e42e3_b7ab220c",
+        "filename": "python-tooz.spec",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2023-06-27T10:33:39Z",
+      "side": 1,
+      "message": "we need this extras to build the docs, right?",
+      "range": {
+        "startLine": 94,
+        "startChar": 55,
+        "endLine": 94,
+        "endChar": 81
+      },
+      "revId": "de08f059698922c085164de104f59a0f597fe4a4",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    }
+  ]
+}

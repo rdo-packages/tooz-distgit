@@ -99,6 +99,30 @@
       },
       "revId": "de08f059698922c085164de104f59a0f597fe4a4",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3016014e_da5d3d7a",
+        "filename": "python-tooz.spec",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 635
+      },
+      "writtenOn": "2023-06-29T16:57:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "796d1d8b_64a7e2bd",
+      "range": {
+        "startLine": 94,
+        "startChar": 55,
+        "endLine": 94,
+        "endChar": 81
+      },
+      "revId": "de08f059698922c085164de104f59a0f597fe4a4",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
     }
   ]
 }

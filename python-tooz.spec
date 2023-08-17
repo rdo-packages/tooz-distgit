@@ -118,7 +118,7 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %pyproject_install
 rm -fr %{buildroot}%{python3_sitelib}/%{pypi_name}/tests/
 
-%pyproject_extras_subpkg -n python3-%{pypi_name} zake redis
+%pyproject_extras_subpkg -n python3-%{pypi_name} zake redis etcd3gw
 
 %files -n python3-%{pypi_name}
 %license LICENSE

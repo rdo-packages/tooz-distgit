@@ -3,6 +3,7 @@
 %global sources_gpg_sign 0x2426b928085a020d8a90d0d879ab7008d0896c8a
 %global pypi_name tooz
 %global with_doc 0
+%global rhosp 0
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 # we are excluding some BRs from automatic generator
@@ -50,7 +51,10 @@ BuildRequires:  python3-devel
 BuildRequires:  pyproject-rpm-macros
 
 Requires:  python3-%{pypi_name}+zake = %{version}-%{release}
+
+%if 0%{?rhosp} == 0
 Requires:  python3-%{pypi_name}+redis = %{version}-%{release}
+%endif
 
 %description -n python3-%{pypi_name}
 %{common_desc}
@@ -118,7 +122,11 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %pyproject_install
 rm -fr %{buildroot}%{python3_sitelib}/%{pypi_name}/tests/
 
+%if 0%{?rhosp} == 0
 %pyproject_extras_subpkg -n python3-%{pypi_name} zake redis etcd3gw
+%else
+%pyproject_extras_subpkg -n python3-%{pypi_name} zake etcd3gw
+%endif
 
 %files -n python3-%{pypi_name}
 %license LICENSE

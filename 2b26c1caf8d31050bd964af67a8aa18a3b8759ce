@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01f31f2b_d7502c57",
+        "filename": "python-tooz.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2024-04-19T07:59:56Z",
+      "side": 1,
+      "message": "it should be the opposite, if rhosp \u003d\u003d 0. include redis",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 6
+      },
+      "revId": "2b26c1caf8d31050bd964af67a8aa18a3b8759ce",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    }
+  ]
+}

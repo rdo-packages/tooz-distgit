@@ -16,6 +16,23 @@
       "message": "recheck",
       "revId": "0badb9babac13e01fa97cd76b426b26994cebb46",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a958c49_d57eff98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 635
+      },
+      "writtenOn": "2024-11-15T12:40:42Z",
+      "side": 1,
+      "message": "I think this patch can be abandoned now that OSP wants redis back in tooz",
+      "revId": "0badb9babac13e01fa97cd76b426b26994cebb46",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
     }
   ]
 }

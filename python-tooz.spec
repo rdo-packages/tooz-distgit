@@ -3,7 +3,6 @@
 %global sources_gpg_sign 0xa7475c5f2122fec3f90343223fe3bf5aad1080e4
 %global pypi_name tooz
 %global with_doc 0
-%global rhosp 0
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
@@ -57,9 +56,7 @@ Requires:       python3-zake
 Requires:       python3-msgpack >= 0.4.0
 
 
-%if 0%{?rhosp} == 0
 Requires:       python3-redis
-%endif
 
 %description -n python3-%{pypi_name}
 %{common_desc}
@@ -87,10 +84,7 @@ BuildRequires:  python3-msgpack >= 0.4.0
 
 
 BuildRequires:  python3-psycopg2
-
-%if 0%{?rhosp} == 0
 BuildRequires:  python3-redis
-%endif
 
 %description doc
 %{common_desc}
